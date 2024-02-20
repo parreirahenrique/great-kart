@@ -13,7 +13,7 @@
                 <h2 class="text-center">Your shopping cart is empty</h2>
                 <br>
                 <div class="text-center">
-                    <a href="{% url 'store' %}" class="btn btn-primary">Continue Shopping</a>
+                    <a href="{% url 'store' %}" class="btn btn-primary">Start Shopping</a>
                 </div>
             </div>
             {% else %}
@@ -36,7 +36,7 @@
                                         <div class="aside"><img src="{{ item.product.images.url }}" class="img-sm">
                                         </div>
                                         <figcaption class="info">
-                                            <a href="#" class="title text-dark">{{ item.product }}</a>
+                                            <a href="{{ item.product.get_url }}" class="title text-dark">{{ item.product }}</a>
                                             <p class="text-muted small">Color: Blue <br> Size: L</p>
                                         </figcaption>
                                     </figure>
@@ -94,8 +94,10 @@
                         <p class="text-center mb-3">
                             <img src="{% static './images/misc/payments.png' %}" height="26">
                         </p>
+                        {% if cart_items %}
                         <a href="./place-order.html" class="btn btn-primary btn-block"> Checkout </a>
                         <a href="{% url 'store' %}" class="btn btn-light btn-block">Continue Shopping</a>
+                        {% endif %}
                     </div> <!-- card-body.// -->
                 </div> <!-- card.// -->
 
