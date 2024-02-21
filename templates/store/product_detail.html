@@ -34,9 +34,11 @@
                                 <div class="item-option-select">
                                     <h6>Choose Color</h6>
                                     <select name="color" class="form-control" required>
-                                        <option value="" disabled selected>Choose color</option>
-                                        {% for value in product.variation_set.colors %}
-                                        <option value="{{ value.variation_value | lower }}">{{ value.variation_value |capfirst }}</option>
+                                        <option value="" disabled selected>Select</option>
+                                        {% for variation in product.variation_set.colors %}
+                                        <option value="{{ variation.variation_value|lower }}">
+                                            {{ variation.variation_value|capfirst }}
+                                        </option>
                                         {% endfor %}
                                     </select>
                                 </div>
@@ -44,33 +46,32 @@
                             <div class="row">
                                 <div class="item-option-select">
                                     <h6>Select Size</h6>
-                                    <select name="size" class="form-control"required>
-                                        <option value="" disabled selected>Choose size</option>
-                                        {% for value in product.variation_set.sizes %}
-                                        <option value="{{ value.variation_value | lower }}">{{ value.variation_value |capfirst }}</option>
+                                    <select name="size" class="form-control" required>
+                                        <option value="" disabled selected>Select</option>
+                                        {% for variation in product.variation_set.sizes %}
+                                        <option value="{{ variation.variation_value|lower }}">
+                                            {{ variation.variation_value|capfirst }}
+                                        </option>
                                         {% endfor %}
                                     </select>
                                 </div>
                             </div> <!-- row.// -->
                             <hr>
 
-                            {% if product.stock <= 0%} <h5>Out of Stock</h5>
+                            {% if product.stock <= 0%} <h5 class="text-danger">Out of Stock</h5>
                                 {% else %}
-                                {% if in_cart %}
-                                <button type="submit" href="{% url 'add_cart' product.id %}" class="btn  btn-success"> <span
-                                        class="text">Added
-                                        to
-                                        cart</span>
-                                    <i class="fas fa-check"></i>
+                                {% if not in_cart %}
+                                <button type="submit" href="{% url 'add_cart' product.id %}" class="btn  btn-primary">
+                                    <span class="text">Add to cart</span><i class="fas fa-shopping-cart"></i>
+                                </button>
+                                {% else %}
+                                <button type="submit" href="{% url 'add_cart' product.id %}" class="btn  btn-success">
+                                    <span class="text">Added to cart</span><i class="fas fa-check"></i>
                                 </button>
                                 <a href="{% url 'cart' %}" class="btn  btn-outline-primary"> <span class="text">View
                                         cart</span>
                                     <i class="fas fa-eye"></i>
                                 </a>
-                                {% else %}
-                                <button type="submit" href="{% url 'add_cart' product.id %}" class="btn  btn-primary">
-                                    <span class="text">Add to cart</span><i class="fas fa-shopping-cart"></i>
-                                </button>
                                 {% endif %}
                                 {% endif %}
                         </form>

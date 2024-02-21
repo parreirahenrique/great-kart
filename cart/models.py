@@ -10,11 +10,11 @@ class Cart(models.Model):
         return self.cart_id
     
 class CartItem(models.Model):
-    product =   models.ForeignKey(Product, on_delete=models.CASCADE)
+    product =    models.ForeignKey(Product, on_delete=models.CASCADE)
     variations = models.ManyToManyField(Variation, blank=True)
-    cart =      models.ForeignKey(Cart, on_delete=models.CASCADE)
-    quantity =  models.IntegerField()
-    is_active = models.BooleanField(default=True)
+    cart =       models.ForeignKey(Cart, on_delete=models.CASCADE)
+    quantity =   models.IntegerField()
+    is_active =  models.BooleanField(default=True)
     
     def subtotal(self):
         return self.product.price * self.quantity
