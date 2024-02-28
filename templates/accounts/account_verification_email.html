@@ -1,0 +1,11 @@
+{% autoescape off %}
+
+Hello, {{ user.first_name }},
+
+Welcome to GreatKart! Please click on the link below to confirm your account registration.
+
+http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+
+If you were not responsible for the creation of this account, please ignore this email.
+
+{% endautoescape %}
