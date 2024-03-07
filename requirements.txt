@@ -5,6 +5,7 @@ Django==5.0.2
 django-admin-thumbnails==0.2.8
 idna==3.6
 pillow==10.2.0
+python-decouple==3.8
 pytz==2024.1
 requests==2.31.0
 setuptools==69.1.0
