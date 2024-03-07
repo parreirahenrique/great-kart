@@ -140,18 +140,29 @@
                                 </a>
                             </div> <!-- img-wrap.// -->
                             <figcaption class="info-wrap">
-                                <div class="fix-height">
+                                <div style="min-height: 13vh;">
                                     <a href="{{ product.get_url }}" class="title">{{ product.product_name }}</a>
                                     <div class="price-wrap mt-2">
                                         <span class="price">${{ product.price }}</span>
                                     </div> <!-- price-wrap.// -->
+                                    <div class="rating-star">
+                                        <span>
+                                            <i class="fa fa-star{% if product.averageReview == 0.5 %}-half-o{% elif product.averageReview < 1 %}-o{% endif %}" aria-hidden="true"></i>
+                                            <i class="fa fa-star{% if product.averageReview == 1.5 %}-half-o{% elif product.averageReview < 2 %}-o{% endif %}" aria-hidden="true"></i>
+                                            <i class="fa fa-star{% if product.averageReview == 2.5 %}-half-o{% elif product.averageReview < 3 %}-o{% endif %}" aria-hidden="true"></i>
+                                            <i class="fa fa-star{% if product.averageReview == 3.5 %}-half-o{% elif product.averageReview < 4 %}-o{% endif %}" aria-hidden="true"></i>
+                                            <i class="fa fa-star{% if product.averageReview == 4.5 %}-half-o{% elif product.averageReview < 5 %}-o{% endif %}" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
                                 </div>
                                 {% if product.stock > 0 %}
-                                <a href="{% url 'add_cart' product.id %}" class="btn btn-block btn-primary">Add to cart
+                                <a href="{% url 'add_cart' product.id %}" class="btn btn-block btn-primary">
+                                    Add to cart
                                 </a>
                                 {% else %}
-                                <a href="{% url 'add_cart' product.id %}" class="btn btn-block btn-outline-primary">View
-                                    details </a>
+                                <a href="{% url 'add_cart' product.id %}" class="btn btn-block btn-outline-primary">
+                                    View details
+                                </a>
                                 <span class=" notify">Out of stock</span>
                                 {% endif %}
                             </figcaption>
