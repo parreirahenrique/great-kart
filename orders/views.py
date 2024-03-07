@@ -22,7 +22,7 @@ def placeOrder(request, total=0, quantity=0):
         return redirect('store')
     
     for item in cart_items:
-        total = (item.quantity * item.product.price)
+        total += (item.quantity * item.product.price)
         quantity += item.quantity
     
     tax = .02 * total
