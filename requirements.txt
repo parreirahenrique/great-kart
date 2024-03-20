@@ -18,12 +18,10 @@ jmespath==1.0.1
 packaging==24.0
 pathspec==0.10.1
 pillow==10.2.0
-pypiwin32==223
 python-dateutil==2.9.0.post0
 python-decouple==3.8
 python-ipware==2.0.2
 pytz==2024.1
-pywin32
 PyYAML==6.0.1
 requests==2.31.0
 semantic-version==2.8.5
