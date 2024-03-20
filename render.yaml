@@ -4,4 +4,4 @@ services:
     name: greatkart
     runtime: python
     buildCommand: "./build.sh"
-    startCommand: "python -m gunicorn mysite.asgi:application -k uvicorn.workers.UvicornWorker"
+    startCommand: "python -m gunicorn greatkart.asgi:application -k uvicorn.workers.UvicornWorker"
